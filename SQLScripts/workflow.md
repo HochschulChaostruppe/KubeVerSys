@@ -1,9 +1,9 @@
 # SQLQueries
 
-###Get Queries:
+### Get Queries:
 
 Get whole List:
-`select * from listView where listName = <yourListName>;``
+`select * from listView where listName = <yourListName>;`
 
 Get Listnames:
 `select * from todolists.listNames;`
@@ -14,7 +14,9 @@ Get single item:
 Get single item from specific list:
 `select * from todoLists.listView where itemName = <yourItemName> and listName = <yourListName>;`
 
-###Add Queries:
+**Note: all queries return the whole line from the db. With get listnames that includes the ID.**
+
+### Add Queries:
 
 Add List:
 `insert into todoLists.listNames (listName) values (<yourListName>);`
@@ -25,7 +27,7 @@ Add Item (Check not specified):
 Add Item (Check specified):
 `call addItemChecked(<yourListName>, <yourItemName>, <0|1>);`
 
-###Check Queries:
+### Check Queries:
 
 Checking a listItem:
 `call checkItem(<yourListName>, <yourItemName>);`
@@ -33,7 +35,7 @@ Checking a listItem:
 Unchecking a listItem:
 `call uncheckItem(<yourListName>, <yourItemName>);`
 
-###Delete Queries:
+### Delete Queries:
 
 Delete item from list:
 `call deleteItem(<yourListName>, <yourItemName>);`
