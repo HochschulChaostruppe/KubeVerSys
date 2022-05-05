@@ -17,42 +17,48 @@ create or replace procedure deleteItem(listParam CHAR(255), itemParam CHAR(255))
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
     delete from todoLists.listItems where listID = @currentListID and itemName = itemParam;
-END;
+END
+//
+//
 /*creation of delete procedure to delete whole lists easily*/
 create or replace procedure deleteList(listParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
     delete from todoLists.listItems where listID = @currentListID;
     delete from todoLists.listNames where ID = @currentListID;
-END;
-
+END
+//
+//
 /*creation of addItem procedure to add Items to a list by the list name*/
 create or replace procedure addItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
     insert into listItems (listID, itemName) values (@currentListID, itemParam)
-END;
-
+END
+//
+//
 /*creation of addItem procedure to add Items to a list by the list name, additionally specifying checked parameter*/
 create or replace procedure addItemCheck(listParam CHAR(255), itemParam CHAR(255), itemChecked boolean) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
     insert into listItems (listID, itemName, checked) values (@currentListID, itemParam, itemChecked)
-END;
-
+END
+//
+//
 /*creation of checkItem procedure to check a specific item (change value of checked to 1)*/
 create or replace procedure checkItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
     update listItems set checked = 1 values where listID = @currentListID and itemName = itemParam
-END;
-
+END
+//
+//
 /*creation of checkItem procedure to check a specific item (change value of checked to 0)*/
 create or replace procedure uncheckItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
     update listItems set checked = 0 values where listID = @currentListID and itemName = itemParam
-END;
+END
 //
 
 DELIMITER;
