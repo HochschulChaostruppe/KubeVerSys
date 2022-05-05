@@ -3,22 +3,26 @@ GITHUB_URI = https://github.com/HochschulChaostruppe/KubeVerSys
 #echo "Please log in to the server:"
 #ssh rn@$SERVER_IP
 echo "Installing Kubernetes components..."
-sudo snap install micro-k8s
-sudo micro-k8s enable dns
+sudo apt install git
+sudo snap install microk8s --classic
+sudo snap install kubectl --classic
+sudo micro-k8s enable dns helm3
 sudo mkdir /home/KubeFiles
 cd /home/KubeFiles
-sudo curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-sudo chmod 700 get_helm.sh
-sudo ./get_helm.sh
+echo "Setting up Kubernetes..."
+sudo mkdir  ~/.kube
+cd ~/.kube
+sudo microk8s config > config
+sudo kubectl proxy --kubeconfig ~/.kube/config --port 8080
 echo "Cloning Files from Github..."
 sudo mkdir Repo
 cd Repo
 git clone $GITHUB_URI
 echo "Installing Cluster components..."
 cd helmCharts/mariaDBChart
-sudo helm install -f values.yaml mariaDB
+sudo microk8s helm3 install -f values.yaml mariaDB
 cd helmCharts/pythonRESTChart
-sudo helm install -f values.yaml pythonREST
+sudo microk8s helm3 install -f values.yaml pythonREST
 
 
 #SERVER_IP = 23.88.44.242
