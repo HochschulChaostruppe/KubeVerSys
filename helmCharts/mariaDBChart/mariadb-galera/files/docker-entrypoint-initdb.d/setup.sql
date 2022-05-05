@@ -19,7 +19,7 @@ BEGIN
     delete from todoLists.listItems where listID = @currentListID and itemName = itemParam;
 END
 //
-//
+
 /*creation of delete procedure to delete whole lists easily*/
 create or replace procedure deleteList(listParam CHAR(255)) 
 BEGIN
@@ -28,7 +28,7 @@ BEGIN
     delete from todoLists.listNames where ID = @currentListID;
 END
 //
-//
+
 /*creation of addItem procedure to add Items to a list by the list name*/
 create or replace procedure addItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
@@ -36,7 +36,7 @@ BEGIN
     insert into listItems (listID, itemName) values (@currentListID, itemParam)
 END
 //
-//
+
 /*creation of addItem procedure to add Items to a list by the list name, additionally specifying checked parameter*/
 create or replace procedure addItemCheck(listParam CHAR(255), itemParam CHAR(255), itemChecked boolean) 
 BEGIN
@@ -44,7 +44,7 @@ BEGIN
     insert into listItems (listID, itemName, checked) values (@currentListID, itemParam, itemChecked)
 END
 //
-//
+
 /*creation of checkItem procedure to check a specific item (change value of checked to 1)*/
 create or replace procedure checkItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
@@ -52,7 +52,7 @@ BEGIN
     update listItems set checked = 1 values where listID = @currentListID and itemName = itemParam
 END
 //
-//
+
 /*creation of checkItem procedure to check a specific item (change value of checked to 0)*/
 create or replace procedure uncheckItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
