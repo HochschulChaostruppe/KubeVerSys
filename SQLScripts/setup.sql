@@ -49,7 +49,7 @@ END
 create or replace procedure checkItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
-    update listItems set checked = 1 values where listID = @currentListID and itemName = itemParam
+    update listItems set checked = 1 where listID = @currentListID and itemName = itemParam
 END
 //
 
@@ -57,7 +57,7 @@ END
 create or replace procedure uncheckItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
-    update listItems set checked = 0 values where listID = @currentListID and itemName = itemParam
+    update listItems set checked = 0 where listID = @currentListID and itemName = itemParam
 END
 //
 
