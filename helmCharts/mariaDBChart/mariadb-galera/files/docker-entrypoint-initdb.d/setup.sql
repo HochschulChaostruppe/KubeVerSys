@@ -33,7 +33,7 @@ END
 create or replace procedure addItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
-    insert into listItems (listID, itemName) values (@currentListID, itemParam)
+    insert into listItems (listID, itemName) values (@currentListID, itemParam);
 END
 //
 
@@ -41,7 +41,7 @@ END
 create or replace procedure addItemCheck(listParam CHAR(255), itemParam CHAR(255), itemChecked boolean) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
-    insert into listItems (listID, itemName, checked) values (@currentListID, itemParam, itemChecked)
+    insert into listItems (listID, itemName, checked) values (@currentListID, itemParam, itemChecked);
 END
 //
 
@@ -49,7 +49,7 @@ END
 create or replace procedure checkItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
-    update listItems set checked = 1 where listID = @currentListID and itemName = itemParam
+    update listItems set checked = 1 where listID = @currentListID and itemName = itemParam;
 END
 //
 
@@ -57,7 +57,7 @@ END
 create or replace procedure uncheckItem(listParam CHAR(255), itemParam CHAR(255)) 
 BEGIN
     select ID into @currentListID from todoLists.listNames where listName = listParam;
-    update listItems set checked = 0 where listID = @currentListID and itemName = itemParam
+    update listItems set checked = 0 where listID = @currentListID and itemName = itemParam;
 END
 //
 
