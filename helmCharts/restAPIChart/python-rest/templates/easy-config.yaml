@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: easy-config
+  labels:
+    app: python-rest
+data:
+  FLASK_IP: {{.Values.restIP}}
+  FLASK_PORT: {{.Values.restPort}}
+  MDB_IP: {{.Values.mdbIP}}
+  MDB_PORT: {{.Values.mdbPort}}  
+  MDB_USER: {{.Values.mdbUser}}
+  MDB_PW: {{.Values.mdbPw}}  
