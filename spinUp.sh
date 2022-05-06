@@ -11,7 +11,7 @@ sudo apt install ufw -y
 sudo ufw allow 22   #ssh
 sudo ufw allow 80   #http-port reverse-proxy
 sudo ufw allow 443  #https-port reverse-proxy
-sudo ufw enable
+sudo ufw enable -y
 echo "Installing Kubernetes components..."
 sudo apt install snapd -y
 sudo snap install microk8s --classic -y
@@ -23,7 +23,7 @@ sudo microk8s helm3 install -f masterValues.yaml galera-master ./
 sudo microk8s helm3 install -f node1Values.yaml galera-node1 ./
 sudo microk8s helm3 install -f node2Values.yaml galera-node2 ./
 sudo microk8s helm3 install -f node3Values.yaml galera-node3 ./
-cd /home/KubeVerSys/helmCharts/restAPIChart/python-api-mariadb
+cd /home/KubeVerSys/helmCharts/restAPIChart/python-api-MariaDB
 sudo microk8s helm3 install -f values.yaml python-rest ./
 cd /home/KubeVerSys/helmCharts/externalProxyChart/reverse-proxy
 sudo microk8s helm3 install -f values.yaml reverse-proxy ./
