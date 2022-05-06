@@ -54,7 +54,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: {{.nodePort}}
+  port: 2001
 
 ingress:
   enabled: false
