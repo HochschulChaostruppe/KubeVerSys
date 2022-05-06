@@ -16,17 +16,17 @@ nameOverride: ""
 fullnameOverride: ""
 
 #container internal api-ip
-restIP: "127.0.0.1"
+restIP: 127.0.0.1
 #container internal api-port
 restPort: 5000
 #cluster internal db url
-mdbIP: "192.168.1.1"
+mdbIP: 192.168.1.1
 #cluster internal db port
 mdbPort: 5306
 #cluster internal db port
-mdbUser: "root"
+mdbUser: root
 #cluster internal db port
-mdbPw: "blob"
+mdbPw: blob
 #external port
 nodePort: 2001
 
