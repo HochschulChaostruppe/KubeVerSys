@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  labels:
+    app: python-rest
+data:
+  FLASK_IP: {{.values.restIP}}
+  FLASK_PORT: {{.values.restPort}}
+  MDB_IP: {{.values.mdbIP}}
+  MDB_PORT: {{.values.mdbPort}}  
+  MDB_USER: {{.values.mdbUser}}
+  MDB_PW: {{.values.mdbPw}}  
