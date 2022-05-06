@@ -1,7 +1,19 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse, abort
 import mariadb
-import sys
+import sys, os
+
+"""
+FLASK_IP = os.environ['FLASK_IP']
+FLASK_PORT = os.environ['FLASK_PORT']
+MDB_IP = os.environ['MDP_IP']
+MDB_PORT = os.environ['MDB_PORT']
+"""
+
+FLASK_IP = '127.0.0.1'
+FLASK_PORT = 5000
+MDB_IP = '157.90.152.100'
+MDB_PORT = 3306
 
 # APP / API
 app = Flask("To-Do-List")
@@ -12,8 +24,8 @@ try:
     conn = mariadb.connect(
         user='rn',
         password='dhge2022/vs!',
-        host='157.90.152.100',
-        port=3306,
+        host=MDB_IP,
+        port=MDB_PORT,
         database='todoLists'
     )
 except mariadb.Error as e:
@@ -114,7 +126,7 @@ api.add_resource(Todolists, '/')
 api.add_resource(Todoitems, '/<string:list_name>')
 
 def main() -> None:
-    app.run()
+    app.run(host=FLASK_IP, port=FLASK_PORT, debug=True)
 
 
 if __name__ == '__main__':
