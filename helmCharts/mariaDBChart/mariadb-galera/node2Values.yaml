@@ -92,7 +92,7 @@ image:
 ## @param podManagementPolicy StatefulSet controller supports relax its ordering guarantees while preserving its uniqueness and identity guarantees. There are two valid pod management policies: OrderedReady and Parallel
 ## ref: https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#pod-management-policy
 ##
-podManagementPolicy: Parallel
+podManagementPolicy: OrderedReady
 ## @param hostAliases Add deployment host aliases
 ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
 ##
@@ -115,11 +115,11 @@ service:
   ## @param service.nodePorts.mysql Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ## e.g:
-  ##nodePort:
-      ##mysql: 5306
+  ## nodePort:
+  ##    mysql: 30001
   ##
-  nodePort:
-    mysql: 5306
+  nodePorts:
+    mysql: 5308
   ## @param service.extraPorts Extra ports to expose (normally used with the `sidecar` value)
   ##
   extraPorts: []
@@ -272,10 +272,10 @@ galera:
   bootstrap:
     ## @param galera.bootstrap.forceBootstrap Option to force the boostraping from the indicated node in `galera.bootstarp.bootstrapFromNode`
     ##
-    forceBootstrap: true
+    forceBootstrap: false
     ## @param galera.bootstrap.bootstrapFromNode Node to bootstrap from, you will need to change this parameter in case you want to bootstrap from other node
     ##
-    bootstrapFromNode: N
+    bootstrapFromNode: 0
     ## @param galera.bootstrap.forceSafeToBootstrap Force `safe_to_bootstrap: 1` in `grastate.date` file
     ## This will set safe_to_bootstrap=1 in the node indicated by bootstrapFromNode.
     ##
@@ -358,7 +358,7 @@ mariadbConfiguration: |-
   tmpdir=/opt/bitnami/mariadb/tmp
   socket=/opt/bitnami/mariadb/tmp/mysql.sock
   pid_file=/opt/bitnami/mariadb/tmp/mysqld.pid
-  bind_address=192.168.1.1
+  bind_address=0.0.0.0
 
   ## Character set
   ##

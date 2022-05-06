@@ -6,5 +6,9 @@ Just a backend consisting of a REST-API written in Python and MariaDB as Databas
 Also using galera as a load balancer to redirect requests to different instances.
 
 ### How to install (on Ubuntu)
-Just login to the server via SSH, clone the repo from gh, 
-run "sudo chmod 700" on the spinUp.sh file and then execute the file (./spinUp.sh)
+First connect to the Server via SSH, then run sudo apt update upgrade.
+Run sudo apt install git then clone the repo with 
+sudo git clone https://github.com/HochschulChaostruppe/KubeVerSys
+Change directory into the repo: cd KubeVerSys
+Last step run the spin up script with sudo ./ spinup.sh
+If it won't run try: sudo chmod 700 spinup.sh

@@ -1,9 +1,13 @@
-GITHUB_URI = https://github.com/HochschulChaostruppe/KubeVerSys
-#SERVER_IP = 
-#echo "Please log in to the server:"
-#ssh rn@$SERVER_IP
+#First connect to the Server via SSH, 
+#run sudo apt update upgrade, 
+#run sudo apt install git
+#then clone the repo with sudo git clone https://github.com/HochschulChaostruppe/KubeVerSys
+#last: cd KubeVerSys
+#run the script with sudo ./ spinup.sh
+#if it won't run try: sudo chmod 700 spinup.sh
+REPO_NAME = KubeVerSys
 echo "Installing Kubernetes components..."
-sudo apt install git
+sudo apt install snapd
 sudo snap install microk8s --classic
 sudo snap install kubectl --classic
 sudo micro-k8s enable dns helm3
@@ -14,21 +18,15 @@ sudo mkdir  ~/.kube
 cd ~/.kube
 sudo microk8s config > config
 sudo kubectl proxy --kubeconfig ~/.kube/config --port 8080
-echo "Cloning Files from Github..."
-sudo mkdir Repo
-cd Repo
-git clone $GITHUB_URI
 echo "Installing Cluster components..."
-cd helmCharts/mariaDBChart
-sudo microk8s helm3 install -f masterValues.yaml GaleraMaster
-sudo microk8s helm3 install -f nodeValues.yaml GaleraNode1
-sudo microk8s helm3 install -f nodeValues.yaml GaleraNode2
-sudo microk8s helm3 install -f nodeValues.yaml GaleraNode3
-cd helmCharts/pythonRESTChart
-sudo microk8s helm3 install -f values.yaml pythonREST
+cd /home/$REPO_NAME
+cd /home/$REPO_NAME/helmCharts/mariaDBChart
+sudo microk8s helm3 install -f masterValues.yaml galera-master
+sudo microk8s helm3 install -f node1Values.yaml galera-node1
+sudo microk8s helm3 install -f node2Values.yaml galera-node2
+sudo microk8s helm3 install -f node3Values.yaml galera-node3
+cd /home/$REPO_NAME/helmCharts/pythonRESTChart
+sudo microk8s helm3 install -f values.yaml python-rest
+cd /home/$REPO_NAME/helmCharts/externalProxyChart
+sudo microk8s helm3 install -f values.yaml reverse-proxy
 
-
-#SERVER_IP = 23.88.44.242
-#If we also do the cluster on the second server, the script will be here:
-#echo "Logging in on second server..."
-#ssh rn@$SERVER_IP

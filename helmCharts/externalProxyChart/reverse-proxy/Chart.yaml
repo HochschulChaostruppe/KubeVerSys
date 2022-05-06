@@ -1,0 +1,24 @@
+annotations:
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: Upgraded `common` chart dependency to version 4.4.1
+apiVersion: v2
+appVersion: 1.2.0
+dependencies:
+- name: common
+  repository: https://library-charts.k8s-at-home.com
+  version: 4.4.1
+description: Creates ingress reverse-proxies for external hosts with minimum boilerplate
+home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/reverse-proxy
+icon: https://kubernetes.io/images/wheel.svg
+keywords:
+- reverse-proxy
+- ingress
+kubeVersion: '>=1.16.0-0'
+maintainers:
+- email: git@angelnu.com
+  name: angelnu
+name: reverse-proxy
+sources:
+- https://kubernetes.io/docs/concepts/services-networking/ingress/
+version: 2.3.1
