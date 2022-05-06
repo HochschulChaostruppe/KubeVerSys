@@ -4,7 +4,7 @@
 #cd /home
 #then clone the repo with sudo git clone https://github.com/HochschulChaostruppe/KubeVerSys
 #last: cd KubeVerSys
-#run the script with sudo ./ spinup.sh
+#run the script with sudo bash spinup.sh
 #if it won't run try: sudo chmod 700 spinup.sh
 echo "Configuring Firewall..."
 sudo apt install ufw -y
@@ -15,9 +15,8 @@ sudo ufw enable
 echo "Installing Kubernetes components..."
 sudo apt install snapd -y
 sudo snap install microk8s --classic -y
-sudo snap install kubectl --classic -y  #Optional for setup, but practical for maintaining the cluster
 echo "Setting up Kubernetes..."
-sudo micro-k8s enable dns dashboard helm3
+sudo microk8s enable dns dashboard helm3
 echo "Installing Cluster components..."
 cd /home/KubeVerSys/helmCharts/mariaDBChart/mariadb-galera
 sudo microk8s helm3 install -f masterValues.yaml galera-master ./

@@ -118,7 +118,7 @@ service:
   ##nodePort:
       ##mysql: 5306
   ##
-  nodePort:
+  nodePorts:
     mysql: 5306
   ## @param service.extraPorts Extra ports to expose (normally used with the `sidecar` value)
   ##

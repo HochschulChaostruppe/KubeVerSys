@@ -11,7 +11,7 @@ First connect to the Server via SSH, then run sudo apt update && apt upgrade.
 Run sudo apt install git then clone the repo with 
 sudo git clone https://github.com/HochschulChaostruppe/KubeVerSys
 Change directory into the repo: cd KubeVerSys
-Last step run the spin up script with sudo ./ spinup.sh
+Last step run the spin up script with sudo bash spinup.sh
 If it won't run try: sudo chmod 700 spinup.sh
 
 ### Usage
