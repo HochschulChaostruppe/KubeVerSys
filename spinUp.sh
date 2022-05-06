@@ -14,7 +14,7 @@ sudo ufw allow 443  #https-port reverse-proxy
 sudo ufw enable -y
 echo "Installing Kubernetes components..."
 sudo apt install snapd -y
-sudo snap install microk8s --classic -y
+sudo snap install microk8s --classic
 echo "Setting up Kubernetes..."
 sudo microk8s enable dns dashboard helm3
 echo "Installing Cluster components..."
