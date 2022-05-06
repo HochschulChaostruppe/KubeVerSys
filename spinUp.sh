@@ -19,14 +19,13 @@ cd ~/.kube
 sudo microk8s config > config
 #sudo kubectl proxy --kubeconfig ~/.kube/config --port 8080
 echo "Installing Cluster components..."
-cd /home/KubeVerSys
-cd /home/KubeVerSys/helmCharts/mariaDBChart/mariadb-galera
+cd ~/KubeVerSys/helmCharts/mariaDBChart/mariadb-galera
 sudo microk8s helm3 install -f masterValues.yaml galera-master
 sudo microk8s helm3 install -f node1Values.yaml galera-node1
 sudo microk8s helm3 install -f node2Values.yaml galera-node2
 sudo microk8s helm3 install -f node3Values.yaml galera-node3
-cd /home/KubeVerSys/helmCharts/pythonRESTChart/python-api-mariadb
+cd ~/KubeVerSys/helmCharts/pythonRESTChart/python-api-mariadb
 sudo microk8s helm3 install -f values.yaml python-rest
-cd /home/KubeVerSys/helmCharts/externalProxyChart/reverse-proxy
+cd ~/KubeVerSys/helmCharts/externalProxyChart/reverse-proxy
 sudo microk8s helm3 install -f values.yaml reverse-proxy
 
