@@ -10,4 +10,4 @@ data:
   MDB_IP: {{.Values.mdbIP}}
   MDB_PORT: {{.Values.mdbPort}}  
   MDB_USER: {{.Values.mdbUser}}
-  MDB_PW: {{.Values.mdbPw}}  
+  MDB_PW: {{.Values.mdbPw}}
